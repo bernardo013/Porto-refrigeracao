@@ -2,7 +2,7 @@
 
 Site institucional estático da Porto Refrigeração, com apresentação de serviços, marcas atendidas e informações de contato. Projeto leve, responsivo e de fácil manutenção.
 
-![Capa do site](assets/img/brands/capa.jpg)
+![Capa do site](assets/img/brands/principal.png)
 
 ### Funcionalidades
 - **Layout responsivo**: otimizado para desktop e dispositivos móveis.
