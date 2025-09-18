@@ -1670,6 +1670,12 @@ svg { max-width: 100%; height: auto; }
   .hero { overflow: hidden; }
   .hero-grid { width: 100%; margin: 0 auto; }
   .hero-content { width: 100%; }
+  /* Keep floating buttons inside the viewport and remove right whitespace */
+  .floating-buttons { right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); left: auto; }
+  .floating-whatsapp { max-width: 56px; }
+  /* Full-width contact form */
+  .contact-grid { max-width: 100%; padding-left: 0; padding-right: 0; }
+  .contact-form-container { padding: 20px 12px; }
 }
 
 /* Precise phone centering fix (<=420px, e.g., 400x761) */
