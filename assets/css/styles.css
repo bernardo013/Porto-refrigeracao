@@ -33,6 +33,9 @@ body {
   padding: 0 20px;
 }
 
+/* Avoid any element causing horizontal overflow */
+html, body, .hero, .container { max-width: 100%; }
+
 /* Imagens e mídias fluidas */
 img, video { max-width: 100%; height: auto; }
 svg { max-width: 100%; height: auto; }
@@ -55,11 +58,11 @@ svg { max-width: 100%; height: auto; }
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
-  height: 60px;
+  height: 64px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: saturate(180%) blur(20px);
   border-radius: 50px;
-  padding: 0 24px;
+  padding: 0 28px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -174,6 +177,8 @@ svg { max-width: 100%; height: auto; }
   background: rgba(255, 255, 255, 0.9); 
   align-items: center; 
   justify-content: center; 
+  flex-direction: column;
+  gap: 4px;
   padding: 8px;
   transition: all 0.2s ease;
 }
@@ -181,7 +186,7 @@ svg { max-width: 100%; height: auto; }
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.menu-toggle .bar { width: 22px; height: 2px; background: var(--text); display: block; margin: 4px 0; transition: transform .2s ease; }
+.menu-toggle .bar { width: 22px; height: 3px; background: var(--text); display: block; margin: 0; border-radius: 2px; }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 700; border: 1px solid transparent; transition: transform .06s ease, background .2s ease, color .2s ease, border-color .2s ease; }
@@ -1116,13 +1121,47 @@ svg { max-width: 100%; height: auto; }
     padding: 0 15px;
   }
   
+  .hero {
+    padding: 60px 0 80px 0;
+    background: 
+      linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%),
+      url('../img/brands/capa.jpg') no-repeat center center / cover;
+    min-height: auto;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .hero-content {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 24px 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
   .hero-content h1 {
     font-size: 24px;
     line-height: 1.2;
+    color: var(--text);
+    text-shadow: none;
+    margin-bottom: 16px;
+  }
+  
+  .hero-content .highlight {
+    color: var(--primary);
   }
   
   .hero-sub {
     font-size: 16px;
+    color: var(--muted);
+    text-shadow: none;
+    margin-bottom: 20px;
   }
   
   .search-container {
@@ -1162,8 +1201,43 @@ svg { max-width: 100%; height: auto; }
 
 /* Small devices (480px - 767px) */
 @media (min-width: 480px) and (max-width: 767px) {
+  .hero {
+    padding: 70px 0 90px 0;
+    background: 
+      linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.85) 100%),
+      url('../img/brands/capa.jpg') no-repeat center center / cover;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .hero-content {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 28px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    max-width: 90%;
+  }
+  
   .hero-content h1 {
     font-size: 28px;
+    color: var(--text);
+    text-shadow: none;
+    line-height: 1.2;
+  }
+  
+  .hero-content .highlight {
+    color: var(--primary);
+  }
+  
+  .hero-sub {
+    color: var(--muted);
+    text-shadow: none;
   }
   
   .categories-grid {
@@ -1238,12 +1312,6 @@ svg { max-width: 100%; height: auto; }
 
 /* Large devices (960px+) - Desktop styles are default */
 @media (max-width: 960px) {
-  .hero {
-    background:
-      url('../img/brands/capa.jpg') no-repeat center top / 420px auto,
-      linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-  }
-  
   .hero-inner { grid-template-columns: 1fr; }
   .hero-media { height: 240px; }
   .about { grid-template-columns: 1fr; }
@@ -1267,13 +1335,18 @@ svg { max-width: 100%; height: auto; }
 /* Mobile Navigation and Layout Fixes */
 @media (max-width: 768px) {
   .site-header {
-    margin: 0 10px 25px 10px;
-    top: 10px;
+    margin: 0 15px 20px 15px;
+    top: 15px;
   }
   
   .nav-wrapper {
-    padding: 0 16px;
-    height: 56px;
+    padding: 0 24px;
+    height: 64px;
+    border-radius: 30px;
+  }
+  
+  .logo img {
+    height: 40px;
   }
   
   .contact-text {
@@ -1286,6 +1359,8 @@ svg { max-width: 100%; height: auto; }
   
   .menu-toggle { 
     display: inline-flex; 
+    flex-direction: column;
+    gap: 4px;
   }
   
   .modern-nav { 
@@ -1309,7 +1384,7 @@ svg { max-width: 100%; height: auto; }
   
   .nav-pills { 
     flex-direction: column; 
-    gap: 4px;
+    gap: 8px;
     background: transparent;
     border: none;
     padding: 0;
@@ -1360,8 +1435,10 @@ svg { max-width: 100%; height: auto; }
   /* Orçamento Gratuito Mobile */
   .orcamento-gratuito-box {
     max-width: 100%;
-    margin: 0 10px;
-    padding: 20px 16px;
+    margin: 20px auto;
+    padding: 24px 20px;
+    transform: none;
+    box-shadow: 0 8px 32px rgba(213, 63, 71, 0.3);
   }
   
   .orcamento-gratuito-box h3 {
@@ -1474,7 +1551,7 @@ svg { max-width: 100%; height: auto; }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 140px;
 }
 
 .form-submit {
@@ -1585,6 +1662,25 @@ svg { max-width: 100%; height: auto; }
 .contact-address p:last-child {
   margin-bottom: 0;
   color: var(--muted);
+}
+
+/* Generic small-phone hardening (<=480px) */
+@media (max-width: 480px) {
+  .container { padding-left: 12px; padding-right: 12px; }
+  .hero { overflow: hidden; }
+  .hero-grid { width: 100%; margin: 0 auto; }
+  .hero-content { width: 100%; }
+}
+
+/* Precise phone centering fix (<=420px, e.g., 400x761) */
+@media (max-width: 420px) {
+  .container { padding: 0 12px; }
+  .site-header { margin-left: 8px; margin-right: 8px; }
+  .hero { padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; }
+  .hero .container { display: block; }
+  .hero-grid { grid-template-columns: 1fr; justify-content: center; }
+  .hero-content { display: block; width: 100%; max-width: none; margin: 0 auto; }
+  .search-container, .orcamento-gratuito-box { width: 100%; }
 }
 
 
