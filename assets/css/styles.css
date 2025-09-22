@@ -628,15 +628,16 @@ svg { max-width: 100%; height: auto; }
 .service-card-lg .cta-inline { margin-top: auto; }
 .btn-sm { padding: 8px 12px; font-size: 13px; border-radius: 10px; }
 .phone-pill { display: inline-flex; align-items: center; height: 32px; padding: 0 10px; background: #e7f1ff; border: 1px solid #cde3ff; color: var(--primary); font-weight: 800; border-radius: 999px; white-space: nowrap; font-size: 12px; }
-.brands-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); align-items: center; }
+.brands-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 180px)); justify-content: center; align-items: stretch; }
 
 .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: 0 3px 10px rgba(23, 43, 77, 0.04); }
 .card .icon { font-size: 24px; }
 .brand { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; text-align: center; font-weight: 700; color: #3a4a67; }
 
 /* Brand cards with logos */
-.brands-grid { align-items: stretch; }
-.brand-card { display: grid; grid-template-rows: auto auto; align-items: center; justify-items: center; gap: 8px; padding: 16px; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 3px 10px rgba(23, 43, 77, 0.04); }
+/* Center last row and keep uniform alignment */
+.brands-grid { align-items: stretch; justify-content: center; }
+.brand-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 3px 10px rgba(23, 43, 77, 0.04); min-height: 130px; text-align: center; }
 .brand-card img { max-width: 140px; max-height: 36px; width: auto; height: auto; object-fit: contain; filter: grayscale(20%); }
 .brand-card figcaption { font-weight: 700; color: #3a4a67; font-size: 14px; }
 .brand-card:hover img { filter: none; }
